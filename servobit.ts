@@ -6,25 +6,25 @@
 enum vColors
 {
     //% block=red
-    Red = 0xff0000,
+    Rosso = 0xff0000,
     //% block=orange
-    Orange = 0xffa500,
+    Arancione = 0xffa500,
     //% block=yellow
-    Yellow = 0xffff00,
+    Giallo = 0xffff00,
     //% block=green
-    Green = 0x00ff00,
+    Verde = 0x00ff00,
     //% block=blue
-    Blue = 0x0000ff,
+    Blu = 0x0000ff,
     //% block=indigo
-    Indigo = 0x4b0082,
+    Celeste = 0x4b0082,
     //% block=violet
-    Violet = 0x8a2be2,
+    Viola = 0x8a2be2,
     //% block=purple
-    Purple = 0xff00ff,
+    Fucsia = 0xff00ff,
     //% block=white
-    White = 0xffffff,
+    Bianco = 0xffffff,
     //% block=black
-    Black = 0x000000
+    Nero = 0x000000
 }
 
 /**
@@ -86,7 +86,7 @@ namespace ServoBit
       * Initialise all servos to Angle=0
       */
     //% blockId="centreServos"
-    //% block="centre all servos"
+    //% block="Inizializza tutti i servo all'angolo 0"
     //% subcategory=Servos
     export function centreServos(): void
     {
@@ -99,7 +99,7 @@ namespace ServoBit
       * @param servo Servo number (0 to 15)
       * @param angle degrees to turn servo (-90 to +90)
       */
-    //% blockId="an_setServo" block="set servo %servo| to angle %angle"
+    //% blockId="an_setServo" block="Imposta l'angolo del servo %servo| a %angle| gradi"
     //% weight=70
     //% angle.min=-90 angle.max.max=90
     //% subcategory=Servos
@@ -140,7 +140,7 @@ namespace ServoBit
       * @param angle degrees to turn to (-90 to +90)
       * @param speed degrees per second to move (1 to 1000) eg: 60
       */
-    //% blockId="moveServo" block="move servo %servo| to angle %angle| at speed %speed| degrees/sec"
+    //% blockId="moveServo" block="Aziona il servo %servo| fino all'angolo di %angle| gradi alla velocità di %speed| gradi/sec"
     //% weight=70
     //% angle.min=-90 angle.max.max=90
     //% speed.min=1 speed.max=1000
@@ -180,7 +180,7 @@ namespace ServoBit
       * Get Servo Current Actual Position
       * @param servo Servo number (0 to 15)
       */
-    //% blockId="getServoActual" block="servo %servo| actual position"
+    //% blockId="getServoActual" block="Posizione del servo %servo"
     //% weight=10
     //% subcategory=Servos
     export function getServoActual(servo: number): number
@@ -192,7 +192,7 @@ namespace ServoBit
       * Get Servo Target Position
       * @param servo Servo number (0 to 15)
       */
-    //% blockId="getServoTarget" block="servo %servo| target position"
+    //% blockId="getServoTarget" block="Posizione da raggiungere del servo %servo"
     //% weight=8
     //% subcategory=Servos
     export function getServoTarget(servo: number): number
@@ -204,7 +204,7 @@ namespace ServoBit
       * Check if servo has reached target
       * @param servo Servo number (0 to 15)
       */
-    //% blockId="isServoDone" block="servo %servo| is complete"
+    //% blockId="isServoDone" block="Il servo %servo| ha raggiunto la posizione?"
     //% weight=5
     //% subcategory=Servos
     export function isServoDone(servo: number): boolean
@@ -216,7 +216,7 @@ namespace ServoBit
       * Wait until servo has reached target position
       * @param servo Servo number (0 to 15)
       */
-    //% blockId="waitServo" block="wait for servo %servo"
+    //% blockId="waitServo" block="Attendi il servo %servo"
     //% weight=5
     //% subcategory=Servos
     export function waitServo(servo: number): void
@@ -250,7 +250,7 @@ namespace ServoBit
       * Sets the status LED to a given color (range 0-255 for r, g, b).
       * @param rgb colour of the LED
       */
-    //% blockId="val_set_led_color" block="set LED to %rgb=val_colours"
+    //% blockId="val_set_led_color" block="Imposta il LED al colore %rgb=val_colours"
     //% weight=100
     //% subcategory=FireLed
     export function setLedColor(rgb: number)
@@ -268,7 +268,7 @@ namespace ServoBit
     /**
       * Clear LED
       */
-    //% blockId="val_led_clear" block="clear LED"
+    //% blockId="val_led_clear" block="Spegni il LED"
     //% weight=70
     //% subcategory=FireLed
     export function ledClear(): void
@@ -287,13 +287,13 @@ namespace ServoBit
      * Set the brightness of the LED
      * @param brightness a measure of LED brightness in 0-255. eg: 40
      */
-    //% blockId="val_led_brightness" block="set LED brightness %brightness"
-    //% brightness.min=0 brightness.max=255
+    //% blockId="val_led_brightness" block="Imposta la luminosità del LED a %brightness|%"
+    //% brightness.min=0 brightness.max=100
     //% weight=50
     //% subcategory=FireLed
     export function ledBrightness(brightness: number): void
     {
-        fire().setBrightness(brightness);
+        fire().setBrightness(brightness*2.55);
         updateLEDs();
     }
 
@@ -325,7 +325,7 @@ namespace ServoBit
       * @param green Green value of the LED (0 to 255)
       * @param blue Blue value of the LED (0 to 255)
       */
-    //% blockId="val_convertRGB" block="convert from red %red| green %green| blue %blue"
+    //% blockId="val_convertRGB" block="Converti da rosso %red| verde %green| blu %blue"
     //% weight=40
     //% subcategory=FireLed
     export function convertRGB(r: number, g: number, b: number): number
@@ -338,7 +338,7 @@ namespace ServoBit
       * @param color the colour to flash
       * @param delay time in ms for each flash, eg: 100,50,200,500
       */
-    //% blockId="startFlash" block="start flash %color=val_colours| at %delay|(ms)"
+    //% blockId="startFlash" block="Comincia a lampeggiare di colore %color=val_colours| ogni %delay|(ms)"
     //% subcategory=FireLed
     //% delay.min=1 delay.max=10000
     //% weight=90
@@ -365,7 +365,7 @@ namespace ServoBit
     /**
       * Stop Flashing
       */
-    //% block
+    //% blockId="stopFlash" block="Interrompi il lampeggiamento"
     //% subcategory=FireLed
     //% weight=80
     export function stopFlash(): void
