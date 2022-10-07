@@ -87,7 +87,7 @@ namespace ServoBit
       */
     //% blockId="centreServos"
     //% block="Inizializza tutti i servo all'angolo 0"
-    //% subcategory=Servos
+    //% subcategory=Servomotori
     export function centreServos(): void
     {
         for (let i=0; i<16; i++)
@@ -102,7 +102,7 @@ namespace ServoBit
     //% blockId="an_setServo" block="Imposta l'angolo del servo %servo| a %angle| gradi"
     //% weight=70
     //% angle.min=-90 angle.max.max=90
-    //% subcategory=Servos
+    //% subcategory=Servomotori
     export function setServo(servo: number, angle: number): void
     {
         setServoRaw(servo, angle);
@@ -144,7 +144,7 @@ namespace ServoBit
     //% weight=70
     //% angle.min=-90 angle.max.max=90
     //% speed.min=1 speed.max=1000
-    //% subcategory=Servos
+    //% subcategory=Servomotori
     export function moveServo(servo: number, angle: number, speed: number): void
     {
         let step = 1;
@@ -182,7 +182,7 @@ namespace ServoBit
       */
     //% blockId="getServoActual" block="Posizione del servo %servo"
     //% weight=10
-    //% subcategory=Servos
+    //% subcategory=Servomotori
     export function getServoActual(servo: number): number
     {
         return servoActual[servo];
@@ -194,7 +194,7 @@ namespace ServoBit
       */
     //% blockId="getServoTarget" block="Posizione da raggiungere del servo %servo"
     //% weight=8
-    //% subcategory=Servos
+    //% subcategory=Servomotori
     export function getServoTarget(servo: number): number
     {
         return servoTarget[servo];
@@ -206,7 +206,7 @@ namespace ServoBit
       */
     //% blockId="isServoDone" block="Il servo %servo| ha raggiunto la posizione?"
     //% weight=5
-    //% subcategory=Servos
+    //% subcategory=Servomotori
     export function isServoDone(servo: number): boolean
     {
         return servoTarget[servo]==servoActual[servo];
@@ -218,7 +218,7 @@ namespace ServoBit
       */
     //% blockId="waitServo" block="Attendi il servo %servo"
     //% weight=5
-    //% subcategory=Servos
+    //% subcategory=Servomotori
     export function waitServo(servo: number): void
     {
         while (servoActual[servo] != servoTarget[servo]) // what if nothing is changing these values?
@@ -252,7 +252,7 @@ namespace ServoBit
       */
     //% blockId="val_set_led_color" block="Imposta il LED al colore %rgb=val_colours"
     //% weight=100
-    //% subcategory=FireLed
+    //% subcategory=Led
     export function setLedColor(rgb: number)
     {
         stopFlash();
@@ -270,7 +270,7 @@ namespace ServoBit
       */
     //% blockId="val_led_clear" block="Spegni il LED"
     //% weight=70
-    //% subcategory=FireLed
+    //% subcategory=Led
     export function ledClear(): void
     {
         stopFlash();
@@ -290,7 +290,7 @@ namespace ServoBit
     //% blockId="val_led_brightness" block="Imposta la luminosità del LED a %brightness|%"
     //% brightness.min=0 brightness.max=100
     //% weight=50
-    //% subcategory=FireLed
+    //% subcategory=Led
     export function ledBrightness(brightness: number): void
     {
         fire().setBrightness(brightness*2.55);
@@ -304,7 +304,7 @@ namespace ServoBit
     //% blockId="val_colours" block=%color
     //% blockHidden=false
     //% weight=60
-    //% subcategory=FireLed
+    //% subcategory=Led
     //% blockGap=8
     //% shim=TD_ID colorSecondary="#e7660b"
     //% color.fieldEditor="colornumber"
@@ -327,7 +327,7 @@ namespace ServoBit
       */
     //% blockId="val_convertRGB" block="Converti da rosso %red| verde %green| blu %blue"
     //% weight=40
-    //% subcategory=FireLed
+    //% subcategory=Led
     export function convertRGB(r: number, g: number, b: number): number
     {
         return ((r & 0xFF) << 16) | ((g & 0xFF) << 8) | (b & 0xFF);
@@ -339,7 +339,7 @@ namespace ServoBit
       * @param delay time in ms for each flash, eg: 100,50,200,500
       */
     //% blockId="startFlash" block="Comincia a lampeggiare di colore %color=val_colours| ogni %delay|(ms)"
-    //% subcategory=FireLed
+    //% subcategory=Led
     //% delay.min=1 delay.max=10000
     //% weight=90
     export function startFlash(color: number, delay: number): void
@@ -366,7 +366,7 @@ namespace ServoBit
       * Stop Flashing
       */
     //% blockId="stopFlash" block="Interrompi il lampeggiamento"
-    //% subcategory=FireLed
+    //% subcategory=Led
     //% weight=80
     export function stopFlash(): void
     {
