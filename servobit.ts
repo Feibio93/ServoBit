@@ -229,13 +229,13 @@ namespace ServoBit
 
 // FireLed Status Blocks
 
-    // create a FireLed band if not got one already. Default to brightness 40
+    // create a FireLed band if not got one already. Default to brightness 20%
     function fire(): fireled.Band
     {
         if (!fireBand)
         {
             fireBand = fireled.newBand(DigitalPin.P16, 1);
-            fireBand.setBrightness(40);
+            fireBand.setBrightness(20);
         }
         return fireBand;
     }
@@ -285,9 +285,9 @@ namespace ServoBit
 
     /**
      * Set the brightness of the LED
-     * @param brightness a measure of LED brightness in 0-255. eg: 40
+     * @param brightness a measure of LED brightness in 0-100. eg: 20
      */
-    //% blockId="val_led_brightness" block="Imposta la luminosità del LED a %brightness|%"
+    //% blockId="val_led_brightness" block="Imposta la luminosità del LED al %brightness| %"
     //% brightness.min=0 brightness.max=100
     //% weight=50
     //% subcategory=Led
