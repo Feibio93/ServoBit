@@ -287,7 +287,7 @@ namespace ServoBit
      * Set the brightness of the LED
      * @param brightness a measure of LED brightness in 0-100. eg: 20
      */
-    //% blockId="val_led_brightness" block="Imposta la luminosità del LED al %brightness| \%"
+    //% blockId="val_led_brightness" block="Imposta la luminosità del LED al %brightness| percento"
     //% brightness.min=0 brightness.max=100
     //% weight=50
     //% subcategory=Led
